@@ -12,10 +12,14 @@ let elementos;
 let numCartas;
 let cartasOrdem = [];
 let todasCartas;
+let numeroDeJogadas = 0;
+let resposta;
 
 function iniciarCartas() {
   while (contador !== true) {
-    let resposta = prompt("Com quantas cartas você quer jogar?");
+    resposta = prompt(
+      "Com quantas cartas você quer jogar? Digite um número par entre 4 e 14"
+    );
     let valor = resposta % 2;
     if (
       Number(resposta) !== 0 &&
@@ -50,22 +54,24 @@ function adicionarCartas() {
   }
 }
 
-function verificaSeEstaEmArray(array, nome) {
-  return array.includes(nome);
+function fimDeJogo() {
+  let cartasViradas = document.querySelectorAll(".semPointer").length;
+  if (Number(resposta) === cartasViradas) {
+    alert(`Você ganhou em ${numeroDeJogadas} jogadas! 
+    Para jogar novamente, reinicie a página e clique em ok`);
+  }
 }
 
 function aparecerFundo(elemento) {
   let papa = elemento.querySelector(".frente");
   let traseira = elemento.querySelector(".resposta");
   let qtdAberta = document.querySelectorAll(".aberto");
-  console.log("oie");
 
   if (qtdAberta.length > 1) {
     //verifica se tem 2 cartas abertas
 
     contarCartasAbertas();
     papa.parentNode.classList.toggle("flip"); // flipa o papagaio
-    console.log("oi");
   }
   papa.classList.add("escondido"); // tira o papagaio
   papa.parentNode.classList.add("flip");
@@ -86,6 +92,7 @@ function contarCartasAbertas() {
     todasCartas[1].parentElement.attributes[1].textContent = "";
     todasCartas[0].parentElement.classList.add("semPointer");
     todasCartas[1].parentElement.classList.add("semPointer");
+    numeroDeJogadas++;
   } else {
     todasCartas[0].classList.add("escondido");
     todasCartas[0].classList.remove("aberto");
@@ -95,7 +102,8 @@ function contarCartasAbertas() {
     todasCartas[1].parentNode.children[0].classList.remove("escondido");
     todasCartas[0].parentNode.classList.toggle("flip");
     todasCartas[1].parentNode.classList.toggle("flip");
-    console.log("diferentes");
+
+    numeroDeJogadas++;
   }
 }
 
@@ -107,6 +115,7 @@ function game() {
   numCartas = iniciarCartas();
   embaralharCartas(lista);
   adicionarCartas();
+  setInterval(fimDeJogo, 1);
 }
 
 game();
