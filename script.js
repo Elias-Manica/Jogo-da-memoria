@@ -58,42 +58,31 @@ function aparecerFundo(elemento) {
   let papa = elemento.querySelector(".frente");
   let traseira = elemento.querySelector(".resposta");
   let qtdAberta = document.querySelectorAll(".aberto");
+  console.log("oie");
+
   if (qtdAberta.length > 1) {
     //verifica se tem 2 cartas abertas
+
     contarCartasAbertas();
-    // if (todasCartas[0].src !== todasCartas[1].src) {
-    //   console.log("oi");
-    //   let carta1 = document.querySelector(".resposta.aberto");
-    //   carta1.classList.add("escondido");
-    //   carta1.classList.remove("aberto");
-    //   let carta1Frente = document.querySelector(".frente.escondido");
-    //   carta1Frente.classList.remove("escondido");
-    //   let carta2 = document.querySelector(".resposta.aberto");
-    //   carta2.classList.add("escondido");
-    //   carta2.classList.remove("aberto");
-    //   let carta2Frente = document.querySelector(".frente.escondido");
-    //   carta2Frente.classList.remove("escondido");
-    // }
-    // if (todasCartas[0].src === todasCartas[1].src) {
-    //   todasCartas[0].className = "";
-    //   todasCartas[1].className = "";
-    //   todasCartas = [];
-    // }
+    console.log("oi");
   }
   papa.classList.add("escondido"); // tira o papagaio
   traseira.classList.remove("escondido"); // aparece a resposta de trás
   traseira.classList.add("aberto"); // adiciona uma classe aberto
+  qtdAberta = document.querySelectorAll(".aberto");
+  setTimeout(contarCartasAbertas, 1000);
 }
 
 function contarCartasAbertas() {
   let todasCartas = document.querySelectorAll(".resposta.aberto");
-  let carta1 = document.querySelector(".resposta.aberto");
 
   if (todasCartas[0].src === todasCartas[1].src) {
     todasCartas[0].className = "";
     todasCartas[1].className = "";
     todasCartas[0].parentElement.attributes[1].textContent = "";
     todasCartas[1].parentElement.attributes[1].textContent = "";
+    todasCartas[0].parentElement.classList.add("semPointer");
+    todasCartas[1].parentElement.classList.add("semPointer");
   } else {
     todasCartas[0].classList.add("escondido");
     todasCartas[0].classList.remove("aberto");

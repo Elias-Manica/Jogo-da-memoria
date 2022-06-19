@@ -47,6 +47,10 @@ img {
   transition: all 0.5s linear;
 }
 
+.semPointer {
+  cursor: initial;
+}
+
 .escondido {
   display: none;
 }
