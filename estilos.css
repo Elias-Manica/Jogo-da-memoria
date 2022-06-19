@@ -5,6 +5,11 @@ body {
   align-items: center;
 }
 
+img {
+  width: 100px;
+  height: 100px;
+}
+
 .titulo {
   font-family: "Roboto", sans-serif;
   font-size: 56px;
@@ -15,6 +20,7 @@ body {
   margin-top: 40px;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .caixaComCartas {
@@ -34,4 +40,13 @@ body {
   margin-left: 34px;
   margin-right: 34px;
   margin-bottom: 34px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s linear;
+}
+
+.escondido {
+  display: none;
 }
