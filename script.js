@@ -97,8 +97,10 @@ function contarCartasAbertas() {
   } else {
     todasCartas[0].classList.add("escondido");
     todasCartas[0].classList.remove("aberto");
+    todasCartas[0].parentNode.children[0].classList.remove("escondido");
     todasCartas[1].classList.add("escondido");
     todasCartas[1].classList.remove("aberto");
+    todasCartas[1].parentNode.children[0].classList.remove("escondido");
     console.log("diferentes");
   }
 }
