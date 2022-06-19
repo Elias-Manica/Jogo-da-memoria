@@ -38,7 +38,7 @@ function adicionarCartas() {
   for (let j = 0; j < cartasOrdem.length; j++) {
     const qtdCartas = document.querySelector(".caixaComCartas");
     const addCartas = `
-    <div class="carta" onclick="aparecerFundo(this)">
+    <div class="carta flip" onclick="aparecerFundo(this)">
         <img class="aparecendo frente" src="./Imagens/front.png" />
         <img
             class="escondido aparecendo resposta"
@@ -64,13 +64,16 @@ function aparecerFundo(elemento) {
     //verifica se tem 2 cartas abertas
 
     contarCartasAbertas();
+    papa.parentNode.classList.toggle("flip"); // flipa o papagaio
     console.log("oi");
   }
   papa.classList.add("escondido"); // tira o papagaio
+  papa.parentNode.classList.add("flip");
+  papa.parentNode.classList.toggle("flip"); // flipa o papagaio
   traseira.classList.remove("escondido"); // aparece a resposta de trás
   traseira.classList.add("aberto"); // adiciona uma classe aberto
   qtdAberta = document.querySelectorAll(".aberto");
-  setTimeout(contarCartasAbertas, 1000);
+  setTimeout(contarCartasAbertas, 2000);
 }
 
 function contarCartasAbertas() {
@@ -90,6 +93,8 @@ function contarCartasAbertas() {
     todasCartas[1].classList.add("escondido");
     todasCartas[1].classList.remove("aberto");
     todasCartas[1].parentNode.children[0].classList.remove("escondido");
+    todasCartas[0].parentNode.classList.toggle("flip");
+    todasCartas[1].parentNode.classList.toggle("flip");
     console.log("diferentes");
   }
 }

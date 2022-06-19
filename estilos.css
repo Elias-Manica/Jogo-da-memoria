@@ -44,7 +44,16 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.5s linear;
+  transition: all 0.3s linear;
+  transform-style: preserve-3d;
+}
+
+.frente {
+  transform: rotateY(180deg);
+}
+
+.flip {
+  transform: rotateY(180deg);
 }
 
 .semPointer {
